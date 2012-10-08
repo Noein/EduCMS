@@ -1,0 +1,35 @@
+<%= nested_form_for @survey do |f| %>
+<!--<%= f.error_messages %>-->
+  <div class="field">
+    <%= f.label "Название" %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label "Описание" %><br />
+    <%= f.text_area :descryption %>
+  </div>
+  <table border="1">
+    <tr>
+      <th><%= link_to "Предмет:", subjects_path %></th>
+      <th><%= link_to "Группа:", groups_path %></th>
+    </tr>
+    <tr>
+      <td><%= f.select :subject_id, options_from_collection_for_select(Subject.all, 'id', 'title', @survey.subject_id) %></td>
+      <td><%= f.select :group_id, options_from_collection_for_select(Group.all, 'id', 'title', @survey.group_id) %></td>
+    </tr>
+  </table>
+  <hr class='clear' />
+
+  <%= f.fields_for :questions %>
+
+  <%= f.link_to_add "Добавить вопрос", :questions %>
+
+  <div class='clear'>
+    <%= f.submit "Сохранить" %>
+  </div>
+
+  <div class='clear'>
+    <hr />
+  </div>
+
+<% end %>

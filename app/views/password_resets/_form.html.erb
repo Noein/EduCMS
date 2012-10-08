@@ -1,0 +1,18 @@
+<%= form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f| %>
+  <div class="field">
+    <%= f.label "Электронная почта" %><br />
+    <%= @user.email %>
+  </div>
+  <div class="field">
+    <%= f.label "Пароль" %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label "Повторение пароля" %><br />
+    <%= f.password_field :password_confirmation %>
+    <%= hidden_field_tag :token, @token %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Отправить" %>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+<div class='title'>
+  <hr />
+  <h1>Предметы</h1>
+  <% if admin?  %>
+    <div class='action'><%= link_to 'Добавить Предмет', new_subject_path, :class => 'button' %></div>
+  <% end %>
+  <hr />
+</div>
+
+<% @subjects.each do |subject| %>
+  <div class='white_container round'>
+    <%= link_to subject.title, subject %>
+    <% if admin? %>
+      <p>
+<!--        <div class='box'>
+          <%= link_to 'Оценки', grades_subject_path(subject) %>
+        </div>style='color: gray; display: inline; float: right;'-->
+      <div>
+        <div class='box'>
+          <%= link_to 'Редактировать', edit_subject_path(subject) %>
+        </div> 
+        <div class='box'>
+          <%= link_to 'Удалить', subject, confirm: 'Вы уверены?', method: :delete %>
+        </div> 
+      </div>
+      </p>
+    <% end %>
+  </div>  
+<% end %>
+
+<hr />
+  <%= will_paginate @subjects %>
+<hr />

@@ -1,0 +1,33 @@
+<%= form_for @document, :html => {:multipart => true} do |f| %>
+  <div class="field">
+    <%= f.label "Название" %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label "Описание" %><br />
+    <%= f.text_area :descryption %>
+  </div>
+  <hr class='clear' />
+  <table border="1">
+    <tr>
+      <th><%= link_to "Категория:", categories_path %></th>
+      <th><%= link_to "Предмет:", subjects_path %></th>
+      <th><%= link_to "Группа:", groups_path %></th>
+    </tr>
+    <tr>
+      <td><%= f.select(:category_id, options_from_collection_for_select(Category.all, 'id', 'title', @document.category_id)) %></td>
+      <td><%= f.select(:subject_id, options_from_collection_for_select(Subject.all, 'id', 'title', @document.subject_id)) %></td>
+      <td><%= f.select(:group_id, options_from_collection_for_select(Group.all, 'id', 'title', @document.group_id)) %></td>
+    </tr>
+  </table>
+  <hr class='clear' />
+  <p>
+    <%= label_tag "Файл" %>
+  </p>
+  <%= f.file_field "file" %>
+  <%= f.hidden_field :file_cache %>
+  <hr class='clear' />
+  <div class="actions">
+    <%= f.submit "Сохранить" %>
+  </div>
+<% end %>

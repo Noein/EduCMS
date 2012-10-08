@@ -1,0 +1,7 @@
+<div class="field">
+  <%= f.label :content, "Вопрос:" %><br />
+  <%= f.text_area :content, :class => "question" %><br />
+  <%= f.link_to_remove "Удалить вопрос" %>
+</div>
+<%= f.fields_for :answers %>
+<p><%= f.link_to_add "Добавить ответ", :answers %></p>

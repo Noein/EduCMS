@@ -1,0 +1,22 @@
+<div class='white_container round'>
+  <p style='font-weight: bold;'><%= @news.title %></p>
+  <hr />
+  <div class='text'>
+    <%= RedCloth.new(@news.content, [:filter_html]).to_html.html_safe %>
+  </div>
+    <cpan style='color: gray; display: inline; float: right;'>
+      <%= link_to @news.user.username, @news.user, style: 'color: gray;' %> |
+      <%= @news.created_at %>
+    </cpan>
+  <hr />
+  <div class='clear'>
+    <% if admin? %>
+      <div class='box'>
+        <%= link_to 'Редактировать', edit_news_path(@news) %>
+      </div>
+    <% end %>
+    <div class='box'>
+      <%= link_to 'Назад', news_index_path %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class='white_container round'>
+  <%= form_for(@user) do |f| %>
+    <div class="field">
+      <%= f.label "Имя пользователя" %><br />
+      <%= f.text_field :username %>
+    </div>
+    <div class="field">
+      <%= f.label "Настоящее имя" %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label "Фамилия" %><br />
+      <%= f.text_field :surname %>
+    </div>
+    <div class="field">
+      <%= f.label "Отчество" %><br />
+      <%= f.text_field :patronimic %>
+    </div>
+    <p>
+      <% if admin? then %>
+        <label><%= link_to("Группа:", groups_path) %></label>
+      <% else %>
+        <%= f.label "Группа:" %>
+      <% end %>
+      <br />
+      <%= f.select(:group_id, options_from_collection_for_select(Group.all, 'id', 'title', @user.group_id)) %>
+    </p>
+    <div class="field">
+      <%= f.label "Электронная почта" %><br />
+      <%= f.text_field :email %>
+    </div>
+    <% if current_user == @user then %>
+      <div class="field">
+        <%= f.label "Пароль" %><br />
+        Если вы не хотите изменять пароль, то оставьте следующие поля пустыми
+        <%= f.password_field :password %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, "Подтверждение пароля" %><br />
+        <%= f.password_field :password_confirmation %>
+      </div>
+    <% end  %>
+    <% if admin? then %>
+      <div class="field">
+        <%= f.check_box :admin %>
+        <%= f.label "Администратор" %>
+      </div>
+    <% end %>
+    <div class="actions">
+      <%= f.submit "Сохранить" %>
+    </div>
+  <% end %>
+  <div class='box'>
+    <%= link_to 'Показать', @user %>
+  </div>
+  <div class='box'>
+    <%= link_to 'Назад', users_path %>
+  </div>
+</div>

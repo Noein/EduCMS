@@ -1,0 +1,33 @@
+<div class='title'>
+  <hr />
+  <h1>Группы</h1>
+  <% if admin?  %>
+    <div class='action'><%= link_to 'Создать группу', new_group_path, :class => 'button' %></div>
+  <% end %>
+  <hr />
+</div>
+
+<% @groups.each do |group| %>
+  <div class='white_container round'>
+    <%= link_to group.title, group %>
+    <% if admin? %>
+      <p>
+<!--    <div class='box'>
+          <%= link_to 'Оценки', grades_group_path(group) %>
+        </div>style='color: gray; display: inline; float: right;'-->
+        <div>
+          <div class='box'>
+            <%= link_to 'Редактировать', edit_group_path(group) %>
+          </div>
+          <div class='box'>
+            <%= link_to 'Удалить', group, confirm: 'Вы уверены?', method: :delete %>
+          </div> 
+        </div>
+      </p>
+    <% end %>
+  </div>  
+<% end %>
+
+<hr />
+  <%= will_paginate @groups %>
+<hr />

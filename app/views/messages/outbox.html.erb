@@ -1,0 +1,27 @@
+<div class='title'>
+  <hr />
+  <h1>
+    <%= link_to 'Входящие', messages_path %> |
+    Исходящие
+  </h1>
+  <div class='action'><%= link_to 'Новое сообщение', new_message_path, :class => 'button' %></div>
+  <hr />
+</div>
+
+<% @messages.each do |message| %>
+  <div class='white_container round'>
+    <div class='box'>
+      <%= link_to message.recipient.username, message.recipient %>
+    </div>
+    <%= link_to truncate(message.subject, :length => 25, :separator => '…'), message, :style => 'margin-left: 10px;' %>
+    <%= link_to truncate(message.body, :length => 25, :separator => '…'), message, :style => 'color: grey;' %>
+    <cpan style='float: right;'>
+      <%= message.created_at %>
+      <%= link_to image_tag('trash.gif'), message, method: :delete, :remote => true, title: "Удалить сообщение" %>
+    </cpan>
+  </div>
+<% end %>
+
+<hr />
+  <%= will_paginate @messages %>
+<hr />

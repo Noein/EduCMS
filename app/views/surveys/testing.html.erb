@@ -1,0 +1,35 @@
+<div class='white_container round'>
+
+  <p style='font-weight: bold;'>
+    <%= @survey.title %>
+  </p>
+  <div class='text'>
+    <%= RedCloth.new(@survey.descryption, [:filter_html]).to_html.html_safe %>
+  </div>
+  <hr />
+
+  <div class='clear'>
+    <%= form_tag testing_survey_path(@survey), :method => 'get' do |testing_form| %>
+      <ol>
+        <% for question in @survey.questions %>
+          <li>
+            <%= question.content %>
+            <ul>
+              <% for answer in question.answers %>
+                <%= check_box_tag(question.id.to_s << "_" << answer.id.to_s) %>
+                <%= answer.content %>
+                <br />
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ol>
+      <%= submit_tag "Завешить тест", :name => nil  %>
+    <% end %>
+  </div>
+
+  <div class='box'>
+    <%= link_to 'Отменить', survey_path %>
+  </div>
+
+</div>

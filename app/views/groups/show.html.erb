@@ -1,0 +1,12 @@
+<div class='white_container round'>
+  <p>
+    <b>Название:</b>
+    <%= @group.title %>
+  </p>
+  <div class='box'>
+    <%= link_to 'Редактировать', edit_group_path(@group) %>
+  </div>
+  <div class='box'>
+    <%= link_to 'Назад', groups_path %>
+  </div>
+</div>

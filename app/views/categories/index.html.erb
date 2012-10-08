@@ -1,0 +1,28 @@
+<div class='title'>
+  <hr />
+  <h1>Категории</h1>
+  <% if admin?  %>
+    <div class='action'><%= link_to 'Новая категория', new_category_path, :class => 'button' %></div>
+  <% end %>
+  <hr />
+</div>
+
+<% @categories.each do |category| %>
+  <div class='white_container round'>
+    <%= link_to category.title, category %>
+    <% if admin? %>
+      <p>
+        <div class='box'>
+          <%= link_to 'Редактировать', edit_category_path(category) %>
+        </div> 
+        <div class='box'>
+          <%= link_to 'Удалить', category, confirm: 'Вы уверены?', method: :delete %>
+        </div> 
+      </p>
+    <% end %>
+  </div>  
+<% end %>
+
+<hr />
+  <%= will_paginate @categories %>
+<hr />

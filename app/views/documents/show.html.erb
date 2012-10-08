@@ -1,0 +1,24 @@
+<div class='white_container round'>
+  <div class='box' style='display: inline; float: right;'>
+    <%= link_to 'Скачать файл', @document.file.url %>
+  </div>
+  <p style='font-weight: bold;'><%= @document.title %></p>
+  <div class='text'>
+    <%= RedCloth.new(@document.descryption, [:filter_html]).to_html.html_safe %>
+  </div>
+  <cpan style='color: gray;'>
+    <%= @document.category.title %> |
+    <%= @document.subject.title %> |
+    <%= @document.group.title %>
+  </cpan>
+  <div class='clear'>
+    <% if admin? %>
+      <div class='box'>
+        <%= link_to 'Редактировать', edit_document_path(@document) %>
+      </div>
+    <% end %>
+    <div class='box'>
+      <%= link_to 'Назад', documents_path %>
+    </div>
+  </div>
+</div>

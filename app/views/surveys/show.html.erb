@@ -1,0 +1,42 @@
+<div class='white_container round'>
+
+  <p style='font-weight: bold;'><%= @survey.title %></p>
+  <div class='text'>
+    <%= RedCloth.new(@survey.descryption, [:filter_html]).to_html.html_safe %>
+  </div>
+  <cpan style='color: gray;'>
+    <%= @survey.subject.title %> |
+    <%= @survey.group.title %>
+  </cpan>
+  <hr />
+
+  <% if admin? %>
+    <div class='clear'>
+      <ol>
+        <% for question in @survey.questions %>
+          <li>
+            <%= question.content %>
+            <ul>
+              <% for answer in question.answers %>
+                <li><%= answer.content %></li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+
+    <div class='box'>
+      <%= link_to 'Редактировать', edit_survey_path(@survey) %>
+    </div>
+  <% end %>
+
+  <div class='box'>
+    <%= link_to 'Пройти тест', testing_survey_path(@survey) %>
+  </div>
+
+  <div class='box'>
+    <%= link_to 'Назад', surveys_path %>
+  </div>
+
+</div>

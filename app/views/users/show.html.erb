@@ -1,0 +1,50 @@
+<div class='white_container round'>
+  <p>
+    <% if @this_user %>
+      <div class='box' style='display: inline; float: right;'>
+        <%= link_to 'Личные сообщения', messages_path %>
+      </div>
+    <% elsif current_user %>
+      <div class='box' style='display: inline; float: right;'>
+        <%= link_to 'Послать сообщение', new_message_path(:to => @user.username) %>
+      </div>
+    <% end %>
+  </p>
+  <div class='text'>
+  <p>
+    <b>
+      <%= @user.surname %>
+      <%= @user.name %>
+      <%= @user.patronimic %>
+    </b>
+  </p>
+  <p>
+    Никнейм:
+    <%= @user.username %>
+    <br />
+    Группа:
+    <%= @user.group.title %>
+    <% if @this_user or admin? %>
+      <br />
+      Почта:
+      <%= mail_to @user.email %>
+    <% end %>
+    <br />
+  </p>
+  </div>
+  <% if @this_user or admin? %>
+    <div class='box'>
+      <%= link_to 'Редактировать', edit_user_path(@user) %>
+    </div>
+  <% end %>
+  <div class='box'>
+    <%= link_to 'Назад', users_path %>
+  </div>
+  <% if admin? %>
+    <cpan style='float: right;'>
+      <div class='box'>
+        <%= link_to 'Удалить', @user, confirm: 'Вы уверены?', method: :delete %>
+      </div>
+    </cpan>
+  <% end %>
+</div>

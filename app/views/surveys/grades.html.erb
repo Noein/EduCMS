@@ -1,0 +1,31 @@
+<div class='title'>
+  <hr />
+  <h1>Оценки</h1>
+  <hr />
+</div>
+
+<div class='white_container round'>
+  <table>
+    <tr>
+      <th><%= link_to "Пользователь",   :sort => "user"       %></th>
+      <th><%= link_to "Тест",           :sort => "survey"     %></th>
+      <th><%= link_to "Оценка",         :sort => "mark"       %></th>
+      <th><%= link_to "Процент",        :sort => "percentage" %></th>
+      <th><%= link_to "Верных ответов", :sort => "right"      %></th>
+      <th><%= link_to "Вопросов",       :sort => "questions"  %></th>
+    </tr>
+
+    <% @grades.each do |grade| %>
+      <tr>
+        <td><%= link_to grade.user.username, grade.user %></td>
+        <td><%= link_to grade.survey.title, grade.survey  %></td>
+        <td><%= grade.mark %></td>
+        <td><%= grade.percentage %></td>
+        <td><%= grade.right %></td>
+        <td><%= grade.questions %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<br />

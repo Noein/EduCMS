@@ -1,0 +1,39 @@
+<div class='white_container round'>
+  <% unless @this_user %>
+    <p>
+      <b>От:</b>
+      <%= link_to @message.sender.username, @message.sender %>
+    </p>
+  <% else %>
+    <p>
+      <b>Кому:</b>
+      <%= link_to @message.recipient.username, @message.recipient %>
+    </p>
+  <% end %>
+  <p>
+    <b>Тема:</b>
+    <%= @message.subject %>
+  </p>
+  <p>
+    <b>Отправлено:</b>
+    <%= @message.created_at %>
+  </p>
+  <hr />
+  <div class='text'>
+    <%= RedCloth.new(@message.body, [:filter_html]).to_html.html_safe %>
+  </div>  
+  <p>
+    <% unless @this_user %>
+      <div class='box'>
+        <%= link_to 'Ответить', new_message_path(:reply_to => @message) %>
+      </div>
+      <div class='box'>
+        <%= link_to 'Назад', messages_path %>
+      </div>
+    <% else %>
+      <div class='box'>
+        <%= link_to 'Назад', outbox_path %>
+      </div>
+    <% end %>
+  </p>
+</div>

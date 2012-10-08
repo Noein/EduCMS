@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="description" content="Учебные матириалы и тесты для студентов Колледжа Предпринимательства №11" />
+  <meta name="keywords" content="ЭВМ, операционные системы, техника, сети, лекции, тесты, скачать бесплатно без смс" />
+  <%= favicon_link_tag 'favicon.ico'%>
+  <title><%= title %></title>
+  <!--[if it IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <!--[if it IE 8]>
+    <%= stylesheet_link_tag 'blueprint/ie' %>
+  <![endif]-->
+  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+  <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+  <%= stylesheet_link_tag 'main',             :media => 'screen' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'nested_form' %>
+<!--<%= javascript_include_tag '/snowstorm.js' %>-->
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class='container'>
+    <section class='round'>
+      <div class='top_nav'>
+<!--        <% if current_user and current_user.unread_messages? %>
+          <%= link_to "Новых сообщений: #{current_user.unread_message_count}", messages_path, :class => 'new_messages' %>
+        <% end %>-->
+        <% if current_user %>
+          <%= link_to "Выйти", :logout %></li>
+          <%= link_to "Профиль", user_path(current_user.id) %></li>
+        <% else %>
+          <%= link_to "Войти", :login %></li>
+          <%= link_to "Зарегистрироваться", signup_path %></li>
+        <% end %>
+      </div>
+      <nav class='round'>
+        <ul>
+          <li><%= link_to "Новости",  news_index_path    %></li>
+          <li><%= link_to "Учить",    learn_path   %></li>
+<!--      <li><%= link_to "Тесты",   surveys_path   %></li>-->
+          <li><%= link_to "Люди",     users_path   %></li>
+          <% if current_user and current_user.unread_messages? %>
+            <li><%= link_to "Сообщения (#{current_user.unread_message_count})", messages_path %></li>
+          <% elsif current_user %>
+            <li><%= link_to "Сообщения", messages_path %></li>
+          <% end %>
+          <li><%= link_to "Контакты", contacts_path    %></li>
+<!--      <li><%= link_to "О сайте",  about_path    %></li>-->
+        </ul>
+      </nav>
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+      <section class='content'>
+        <%= yield %>
+      </section>
+    </section>
+    <footer>
+      <p>Copyleft © 2011. None rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>

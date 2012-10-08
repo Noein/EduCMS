@@ -1,0 +1,15 @@
+<%= form_for(@news) do |f| %>
+  <div class='field'>
+    <%= f.label "Заголовок" %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class='field text'>
+    <%= f.label 'Содержание' %><br />
+    <%= f.text_area :content %><br />
+    Можно использовать
+    <%= link_to 'разметку', help_markup_path %>.
+  </div>  
+  <div class='actions'>
+    <%= f.submit "Отправить" %>
+  </div>
+<% end %>

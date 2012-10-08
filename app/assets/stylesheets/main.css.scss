@@ -1,0 +1,299 @@
+/**
+ * Copyright (C) 2011-2012 Vladislav Mileshkin
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+.container {
+  width: 750px; }
+
+body {
+  background: #CFD0D0; }
+
+/* Links */
+
+a {
+  &:link, &:visited {
+    text-decoration: none; }
+  &:hover {
+    text-decoration: underline; }
+  &.button {
+    color: #666666;
+    background: #F8E7D0;
+    padding: 0.5em 0.7em 0.5em 0.7em;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0px 0px 1px #666666 inset;
+    border: 1px #666666;
+    white-space: nowrap;
+    text-align: center;
+    } }
+
+hr {
+  margin: 0 0 0 0px;
+}
+
+.title {
+  margin-bottom: 10px;
+  hr {
+  margin-top: 3px;
+  margin-bottom: 5px; }
+  .action {
+  display: inline;
+  float: right;
+  a.button {
+    padding: 0.5em 0.7em 0.5em 0.7em; }}
+  a {
+  &:link, &:visited {
+    color: black; }
+  &:hover {
+    color: black; }}}
+
+section {
+  margin-top: 10px;
+  font-size: 1.1em;
+  padding: 0px 20px 20px 20px;
+  background: #F0F0F0;
+  border: 1px #666666;
+  border-style: solid;
+  height: auto;
+  -moz-box-shadow: 0px 0px 5px #666666;
+  -webkit-box-shadow: 0px 0px 5px #666666;
+  box-shadow: 0px 0px 5px #666666;
+  h1 {
+    font-size: 1.5em;
+    margin: 5px;
+    display: inline; }
+  h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px; }
+  h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    a {
+      &:link, &:visited {
+      text-decoration: underline; }
+      &:hover {
+      text-decoration: none; } } }
+  .content {
+    border: none;
+    box-shadow: none;
+    padding: 0px 0px 0px 0px; } }
+
+.white_container {
+  background-color: #fff;
+  border: 1px #666666;
+  box-shadow: 0px 0px 1px #666666 inset;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 0 10px 0;
+  p {
+    margin-bottom: 5px; }
+  .box {
+    background: none repeat scroll 0 0 #F9F9F9;
+    border: 1px solid #EEEEEE;
+    display: inline;
+    font-family: Verdana,sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 5px 7px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #FFFFFF;
+    text-transform: uppercase; }
+  a {
+  color: black; } }
+
+.text {
+  a {
+    &:link, &:visited {
+    text-decoration: underline; }
+    &:hover {
+    text-decoration: none; } } }
+
+/* Header */
+
+header {
+  padding-top: 10px;
+  img {
+    padding: 1em;
+    background: #CBCDC6; } }
+
+/* Navigation */
+
+nav {
+  background-color: #F8E7D0;
+  padding: 0.5em 0.7em 0.5em 0.5em;
+  border-radius: 15px 15px 15px 15px;
+  box-shadow: 0px 0px 1px #666666 inset;
+  border: 1px #666666;
+  white-space: nowrap;
+  text-align: center;
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style-type: none;
+      display: inline-block;
+      padding: 0.2em;
+      a {
+        &:link, &:visited {
+          padding: 0 30px;
+          font-weight: bold;
+          color: #666666; }
+        &:hover {
+          padding: 0 30px;
+          font-weight: bold;
+          color: black;
+          text-decoration: none; } } } } }
+
+.top_nav {
+  background: none;
+  text-align: right;
+  border: none;
+  margin: 0px 7px 7px 7px;
+  padding: 3px 7px 7px 7px;
+  font-weight: bold;
+  a {
+    padding: 7px 7px 7px 7px;
+    text-decoration: none;
+    color: white;
+    background: #5061C0;
+    &.new_messages {
+      margin-right: 250px;
+      color: white;
+      background: #FF9169; }
+    &:hover.new_messages {
+      box-shadow: 1px -1px 1px 0px #AC7B68 inset; }
+    &:link, &:visited {
+      box-shadow: -1px 1px 1px 0px #666666; }
+    &:hover {
+      box-shadow: 1px -1px 1px 0px #666666 inset; } } }
+
+/* Round corners */
+
+.round {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px; }
+
+/* Footer */
+
+footer {
+  text-align: center;
+  margin-top: 10px;
+  width: 710px;
+  margin-left: auto;
+  margin-right: auto;
+  nav {
+    float: none; } }
+
+/* User show page */
+
+.clear {
+  margin-top: 10px;
+  margin-bottom: 7px;
+}
+
+select {
+  width: 11em; }
+
+input#document_title, input#news_title, input#survey_title {
+  width: 400px; }
+
+textarea.question{
+  height: 50px;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 0;
+  td {
+  padding: 0; }}
+
+tbody tr:nth-child(2n) td, tbody tr.even td {
+    background: none repeat scroll 0 0 white;
+}
+
+td {
+  &.main {
+    width: 70%;
+    padding: 1em; }
+  &.sidebar {
+    width: 30%;
+    padding: 1em;
+    vertical-align: top;
+    background: #ffc; } }
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px; } }
+
+.field_with_errors {
+  margin-top: 10px;
+  padding: 2px;
+  background-color: red;
+  display: table;
+  label {
+    color: #fff; } }
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff; }
+  p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px; }
+  ul li {
+    font-size: 12px;
+    list-style: square; } }
+
+ul {
+  padding: 0px 0px 0px 15px;
+}
+
+.pagination {
+  background: #f1f1f1;
+  text-align: center;
+  cursor: default;
+  margin: 5px;
+  .disabled {
+    color: #aaaaaa; }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    color: #666666; }
+  a {
+    text-decoration: none;
+    color: #666666;
+    &:hover, &:focus {
+      text-decoration: underline; } } }

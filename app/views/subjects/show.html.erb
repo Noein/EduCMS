@@ -1,0 +1,12 @@
+<div class='white_container round'>
+  <p>
+    <b>Название:</b>
+    <%= @subject.title %>
+  </p>
+  <div class='box'>
+    <%= link_to 'Редактировать', edit_subject_path(@subject) %>
+  </div>
+  <div class='box'>
+    <%= link_to 'Назад', subjects_path %>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class='title'>
+  <hr />
+  <h1>Критерии оценок</h1>
+  <hr />
+</div>
+
+<div class='white_container round'>
+  <font color='red'>Внимание!</font> Пожалуйста, используйте следующую функциональность с осторожностью.<br />
+  Оценку определяет процентное соотношение верных ответов и общего их количества.<br />
+  Задаются они путём определения нижней и верхней границ для оценок.<br />
+  Например, для пятерки это может быть 90 - 100.
+  <%= form_tag admin_criteria_path, :method => 'get' do %>
+    Пятёрка: <%= text_field_tag :five_bottom, params[:five_bottom] %> - <%= text_field_tag :five_top, params[:five_top] %><br />
+    Четверка: <%= text_field_tag :four_bottom, params[:four_bottom] %> - <%= text_field_tag :four_top, params[:four_top] %><br />
+    Тройка: <%= text_field_tag :three_bottom, params[:three_bottom] %> - <%= text_field_tag :three_top, params[:three_top] %><br />
+    <%= submit_tag 'Сохранить', :name => nil  %>
+  <% end %>
+</div>

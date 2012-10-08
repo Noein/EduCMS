@@ -1,0 +1,54 @@
+<div class='title'>
+  <hr />
+  <h1>Файлы</h1>
+  <% if admin?  %>
+    <div class='action'><%= link_to 'Добавить файл', new_document_path, :class => 'button' %></div>
+  <% end %>
+  <hr />
+</div>
+
+<%= form_tag documents_path, :method => 'get' do %>
+  <%= select_tag 'category', options_from_collection_for_select(Category.all, 'id', 'title', params['category']), { :prompt => 'Категория' } %>
+  <%= select_tag 'subject', options_from_collection_for_select(Subject.all, 'id', 'title', params['subject']), { :prompt => 'Предмет' } %>
+  <%= select_tag 'group', options_from_collection_for_select(Group.all, 'id', 'title', params['group']), { :prompt => 'Группа' } %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Искать", :name => nil  %>
+<% end %>
+
+<% @documents.each do |document| %>
+  <div class='white_container round'>
+    <div class='box' style='display: inline; float: right;'>
+      <%= link_to 'Скачать', document.file.url %>
+    </div>
+    <h3><%= link_to truncate(document.title, :length => 80, :separator => '…'), document %></h3>
+    <div class='text'>
+      <%= RedCloth.new(truncate(document.descryption, :length => 300, :separator => '…'), [:filter_html]).to_html.html_safe %>
+    </div>
+    <div class='box'>
+      <%= document.category.title %>
+    </div>
+    <div class='box'>
+      <%= document.subject.title %>
+    </div>
+    <div class='box'>
+      <%= document.group.title %>
+    </div>
+    <div class='box'>
+      <%= document.created_at %>
+    </div>
+    <% if admin? %>
+      <div style='color: gray; display: inline; float: right;'>
+        <div class='box'>
+          <%= link_to 'Редактировать', edit_document_path(document) %></td>
+        </div>
+        <div class='box'>
+          <%= link_to 'Удалить', document, confirm: 'Are you sure?', method: :delete %></td>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<hr />
+  <%= will_paginate @documents %>
+<hr />
